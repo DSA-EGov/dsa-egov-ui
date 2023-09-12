@@ -1,9 +1,13 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
 
-const PrivateRoute: FC<PropsWithChildren> = ({ children }) => {
+interface Props {
+  Component: FC;
+}
+
+const PrivateRoute: FC<Props> = ({ Component }) => {
   const token = localStorage.getItem('access_token');
 
-  return children
+  return <Component />;
 
   // return token ? children : <Navigate to={Route.LOGIN} />;
 };
