@@ -7,6 +7,7 @@ import TermsPage from './TermsPage';
 import ChatPage from './ChatPage';
 import Chat from './Chat';
 import Modal from './Modal';
+import FormField from './FormField';
 
 export {
   LoginPage,
@@ -18,4 +19,5 @@ export {
   ChatPage,
   Chat,
   Modal,
+  FormField,
 };
