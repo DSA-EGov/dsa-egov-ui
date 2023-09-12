@@ -1,7 +1,13 @@
 import { FC } from 'react';
+import { Outlet } from 'react-router';
 
 const App: FC = () => {
-  return <main className="text-red-600">123</main>;
+  return (
+    <main>
+      App
+      <Outlet />
+    </main>
+  );
 };
 
 export default App;
