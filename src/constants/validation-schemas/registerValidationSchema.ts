@@ -5,5 +5,5 @@ export const registerValidationSchema = object({
   email: string().email().required(),
   username: string().required(),
   password: string().required(),
-  passwordConfirm: string().required(),
+  passwordRepeat: string().required(),
 });

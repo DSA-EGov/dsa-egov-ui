@@ -30,6 +30,14 @@
       "@constants/*": ["./constants/*"],
       "@components": ["./components/index"],
       "@components/*": ["./components/*"],
+      "@contexts": ["./contexts/index"],
+      "@contexts/*": ["./contexts/*"],
+      "@hooks": ["./hooks/index"],
+      "@hooks/*": ["./hooks/*"],
+      "@services": ["./services/index"],
+      "@services/*": ["./services/*"],
+      "@icons": ["./icons/index"],
+      "@icons/*": ["./icons/*"],
       "@": ["./"],
       "@/*": ["./*"]
     }

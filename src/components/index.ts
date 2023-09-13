@@ -8,6 +8,9 @@ import ChatPage from './ChatPage';
 import Chat from './Chat';
 import Modal from './Modal';
 import FormField from './FormField';
+import Icon from './Icon';
+import Button from './Button';
+import ModalWindow from './ModalWindow';
 
 export {
   LoginPage,
@@ -20,4 +23,7 @@ export {
   Chat,
   Modal,
   FormField,
+  Icon,
+  Button,
+  ModalWindow,
 };

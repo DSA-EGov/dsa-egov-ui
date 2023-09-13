@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 
 import { loginValidationSchema } from '@constants/validation-schemas';
-import { FormField } from '@components';
+import { Button, FormField, Icon } from '@components';
 import { Route } from '@enums';
 
 const loginValues = { username: '', password: '' };
@@ -31,7 +31,8 @@ const LoginPage: FC = () => {
 
   return (
     <div className="flex items-center flex-1 justify-center">
-      <div className="flex flex-col gap-5 p-12 rounded-2xl shadow-2xl">
+      <div className="flex flex-col items-center gap-5 p-12 rounded-2xl shadow-2xl">
+        <Icon className="w-16" />
         <Formik
           initialValues={loginValues}
           onSubmit={handleLogin}
@@ -50,7 +51,7 @@ const LoginPage: FC = () => {
               placeholder="Parola"
               autoComplete
             />
-            <button type="submit">Logare</button>
+            <Button type="submit">Logare</Button>
           </Form>
         </Formik>
         <Link to={Route.REGISTER}>Creeaza cont</Link>
@@ -63,7 +64,7 @@ const LoginPage: FC = () => {
           useOneTap
           type="standard"
           size="large"
-          locale="auto"
+          locale="ro"
           shape="pill"
         />
       </div>
