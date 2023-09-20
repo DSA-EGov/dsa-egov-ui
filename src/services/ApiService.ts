@@ -53,7 +53,11 @@ export class ApiService {
     return req.data;
   }
 
-  public async post<T, V = any>(url: string, body: V, query?: object): Promise<T> {
+  public async post<T, V = any>(
+    url: string,
+    body: V,
+    query?: object,
+  ): Promise<T> {
     const req = await axios.post(url, body, {
       baseURL: ApiService._baseUrl,
       params: query,

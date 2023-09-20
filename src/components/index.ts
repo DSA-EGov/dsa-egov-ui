@@ -11,6 +11,7 @@ import FormField from './FormField';
 import Icon from './Icon';
 import Button from './Button';
 import ModalWindow from './ModalWindow';
+import GoogleSSO from './GoogleSSO';
 
 export {
   LoginPage,
@@ -26,4 +27,5 @@ export {
   Icon,
   Button,
   ModalWindow,
+  GoogleSSO,
 };

@@ -9,9 +9,12 @@ import {
   useState,
 } from 'react';
 import jwtDecode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import type { User } from '@/types/User';
 import type { JwtPayload } from '@/types/Jwt';
+import { Route } from '@enums';
 
 export interface UserContextProps {
   user: User;
@@ -23,6 +26,8 @@ export interface UserContextProps {
 export const UserContext = createContext<UserContextProps>(null!);
 
 export const UserContextProvider: FC<PropsWithChildren> = ({ children }) => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState<User | null>(null);
 
   const logIn = useCallback((token: string) => {
@@ -34,6 +39,7 @@ export const UserContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const logOut = useCallback(() => {
     localStorage.removeItem('accessToken');
     setUser(null);
+    navigate(Route.LOGIN);
   }, []);
 
   useEffect(() => {
@@ -43,8 +49,15 @@ export const UserContextProvider: FC<PropsWithChildren> = ({ children }) => {
       return;
     }
 
-    // TODO: logout if exp > now
     const decodedUser: JwtPayload = jwtDecode<JwtPayload>(token) ?? null;
+    const expiresDate: Date = new Date(decodedUser.exp * 1000);
+    const now: Date = new Date();
+
+    if (now > expiresDate) {
+      toast('Sesiunea a expirat', { type: 'warning' });
+      return logOut();
+    }
+
     setUser(decodedUser.user);
   }, []);
 

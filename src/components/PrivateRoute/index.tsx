@@ -1,4 +1,7 @@
-import { FC } from 'react';
+import React, {FC, PropsWithChildren} from 'react';
+import {Navigate} from "react-router";
+
+import {Route} from "@enums";
 
 interface Props {
   Component: FC;
@@ -7,9 +10,7 @@ interface Props {
 const PrivateRoute: FC<Props> = ({ Component }) => {
   const token = localStorage.getItem('accessToken');
 
-  return <Component />;
-
-  // return token ? children : <Navigate to={Route.LOGIN} />;
+  return token ? <Component /> : <Navigate to={Route.LOGIN} />;
 };
 
 export default PrivateRoute;
