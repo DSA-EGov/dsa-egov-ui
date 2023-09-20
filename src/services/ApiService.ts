@@ -4,7 +4,7 @@ export class ApiService {
   private static readonly _baseUrl = import.meta.env.VITE_API_URL;
 
   private get _token(): string | null {
-    return localStorage.getItem('access_token');
+    return localStorage.getItem('accessToken');
   }
 
   private get _headers(): Partial<RawAxiosRequestHeaders> {
@@ -53,7 +53,7 @@ export class ApiService {
     return req.data;
   }
 
-  public async post<T>(url: string, body: any, query?: object): Promise<T> {
+  public async post<T, V = any>(url: string, body: V, query?: object): Promise<T> {
     const req = await axios.post(url, body, {
       baseURL: ApiService._baseUrl,
       params: query,

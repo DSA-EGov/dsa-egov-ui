@@ -1,12 +1,18 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useContext } from 'react';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useNavigation } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
+import { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
 
 import { registerValidationSchema } from '@constants/validation-schemas';
 import { Button, FormField, Icon } from '@components';
 import { Route } from '@enums';
+import { useApiService } from '@hooks';
+import type { CreateUser, User } from '@/types/User';
+import type { Jwt } from '@/types/Jwt';
+import { UserContext } from '@contexts/UserContext';
 
 const registerValues = {
   username: '',
@@ -16,14 +22,44 @@ const registerValues = {
 };
 
 const RegisterPage: FC = () => {
+  const navigate = useNavigate();
+  const apiService = useApiService();
+
+  const { logIn } = useContext(UserContext);
+
   const handleRegister = useCallback(
-    (
+    async (
       values: typeof registerValues,
       helpers: FormikHelpers<typeof registerValues>,
     ) => {
-      // TODO: perform register
-      console.log(values);
-      helpers.resetForm();
+      if (values.password !== values.passwordRepeat) {
+        toast('Parolele nu se potrivesc', { type: 'error' });
+        return;
+      }
+
+      try {
+        const res: Jwt = await apiService.post<Jwt, CreateUser>(
+          'auth/register',
+          {
+            email: values.email,
+            password: values.password,
+            username: values.username,
+          },
+        );
+
+        logIn(res.accessToken);
+        helpers.resetForm();
+        navigate(Route.HOME);
+      } catch (err) {
+        if (err instanceof AxiosError && err.response.status === 409) {
+          toast(`Utilizatorul "${values.username}" deja exista`, {
+            type: 'warning',
+          });
+        } else {
+          toast('Ceva a mers gresit', { type: 'error' });
+          console.error(err);
+        }
+      }
     },
     [],
   );

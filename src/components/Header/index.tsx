@@ -1,11 +1,14 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 
 import { Route } from '@enums';
 import { mapRouteParams } from '@/helpers/mapRouteParams';
+import { UserContext } from '@contexts/UserContext';
 
 const Header: FC = () => {
+  const { logOut } = useContext(UserContext);
+
   return (
     <div className="flex gap-12">
       Header
@@ -19,6 +22,7 @@ const Header: FC = () => {
         <Link to={Route.LOGIN}>Login</Link>
         <Link to={Route.REGISTER}>Register</Link>
         <Link to={Route.TERMS}>Terms & Conditions</Link>
+        <button onClick={logOut}>Logout</button>
       </div>
     </div>
   );

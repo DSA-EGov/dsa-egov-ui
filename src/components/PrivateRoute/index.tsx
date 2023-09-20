@@ -5,7 +5,7 @@ interface Props {
 }
 
 const PrivateRoute: FC<Props> = ({ Component }) => {
-  const token = localStorage.getItem('access_token');
+  const token = localStorage.getItem('accessToken');
 
   return <Component />;
 

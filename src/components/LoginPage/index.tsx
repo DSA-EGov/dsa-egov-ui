@@ -1,24 +1,54 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useContext } from 'react';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
+import { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
 
 import { loginValidationSchema } from '@constants/validation-schemas';
 import { Button, FormField, Icon } from '@components';
 import { Route } from '@enums';
+import type { Jwt } from '@/types/Jwt';
+import type { CreateUser, ExistingUser } from '@/types/User';
+import { useApiService } from '@hooks';
+import { UserContext } from '@contexts/UserContext';
 
 const loginValues = { username: '', password: '' };
 
 const LoginPage: FC = () => {
+  const navigate = useNavigate();
+  const apiService = useApiService();
+
+  const { logIn } = useContext(UserContext);
+
   const handleLogin = useCallback(
-    (
+    async (
       values: typeof loginValues,
       helpers: FormikHelpers<typeof loginValues>,
     ) => {
-      // TODO: perform login
-      console.log(values);
-      helpers.resetForm();
+      try {
+        const res: Jwt = await apiService.post<Jwt, ExistingUser>(
+          'auth/login',
+          {
+            password: values.password,
+            username: values.username,
+          },
+        );
+
+        logIn(res.accessToken);
+        helpers.resetForm();
+        navigate(Route.HOME);
+      } catch (err) {
+        if (err instanceof AxiosError && err.response.status === 401) {
+          toast('Parola gresita', {
+            type: 'warning',
+          });
+        } else {
+          toast('Ceva a mers gresit', { type: 'error' });
+          console.error(err);
+        }
+      }
     },
     [],
   );
