@@ -1,7 +1,7 @@
-import React, {FC, PropsWithChildren} from 'react';
-import {Navigate} from "react-router";
+import React, { FC, PropsWithChildren } from 'react';
+import { Navigate } from 'react-router';
 
-import {Route} from "@enums";
+import { Route } from '@enums';
 
 interface Props {
   Component: FC;

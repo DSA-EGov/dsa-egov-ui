@@ -1,10 +1,14 @@
 import { FC, memo, useCallback, useContext } from 'react';
-import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
+import {
+  CredentialResponse,
+  GoogleLogin,
+  GoogleOAuthProvider,
+} from '@react-oauth/google';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 import type { Jwt } from '@/types/Jwt';
 import { Route } from '@enums';
-import { useNavigate } from 'react-router-dom';
 import { UserContext } from '@contexts/UserContext';
 import { useApiService } from '@hooks';
 
@@ -28,18 +32,20 @@ const GoogleSSO: FC = () => {
   }, []);
 
   return (
-    <GoogleLogin
-      onSuccess={handleGoogleLogin}
-      auto_select={false}
-      ux_mode="popup"
-      theme="filled_blue"
-      text="signup_with"
-      useOneTap
-      type="standard"
-      size="large"
-      locale="ro"
-      shape="pill"
-    />
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_G_CLIENT_ID}>
+      <GoogleLogin
+        onSuccess={handleGoogleLogin}
+        auto_select={false}
+        ux_mode="popup"
+        theme="filled_blue"
+        text="signup_with"
+        useOneTap
+        type="standard"
+        size="large"
+        locale="ro"
+        shape="pill"
+      />
+    </GoogleOAuthProvider>
   );
 };
 
