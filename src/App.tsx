@@ -4,11 +4,13 @@ import keycloakConfig from '../utils/keycloakConfig.ts';
 import { ReactKeycloakProvider } from '@react-keycloak/web';
 
 const App: FC = () => {
-
   return (
-    <ReactKeycloakProvider authClient={keycloakConfig} initOptions={{
-      onLoad: 'login-required',
-    }}>
+    <ReactKeycloakProvider
+      authClient={keycloakConfig}
+      initOptions={{
+        onLoad: 'login-required',
+      }}
+    >
       <React.StrictMode>
         <Login />
       </React.StrictMode>

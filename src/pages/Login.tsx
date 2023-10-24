@@ -27,6 +27,6 @@ const Login: React.FC = () => {
       <button onClick={handleLogin}>Login</button>
     </div>
   );
-}
+};
 
 export default Login;
