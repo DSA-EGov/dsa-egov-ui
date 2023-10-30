@@ -7,8 +7,10 @@ import { Header } from '@components';
 const App: FC = () => {
   return (
     <AuthContextProvider>
-      <Header />
-      <Outlet />
+      <main className="overflow-auto mx-auto max-w-[1920px]">
+        <Header />
+        <Outlet />
+      </main>
     </AuthContextProvider>
   );
 };

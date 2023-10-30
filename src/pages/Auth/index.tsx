@@ -1,7 +1,7 @@
 import { useCallback, FC, memo } from 'react';
 import { useKeycloak } from '@react-keycloak/web';
 
-const Login: FC = () => {
+const Auth: FC = () => {
   const { keycloak } = useKeycloak();
 
   const handleLogin = useCallback(() => {
@@ -25,4 +25,4 @@ const Login: FC = () => {
   );
 };
 
-export default memo(Login);
+export default memo(Auth);

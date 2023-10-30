@@ -1,4 +1,4 @@
-import type { IconComponent } from '@/types/IconComponent'
+import type { IconComponent } from '@/types/IconComponent';
 
 export const Close: IconComponent = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>

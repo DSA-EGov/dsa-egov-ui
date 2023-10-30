@@ -2,3 +2,18 @@
 @import 'tailwindcss/components.css';
 @import 'tailwindcss/utilities.css';
 @import 'tailwindcss/variants.css';
+
+body {
+  @apply bg-midnight-blue text-clouds;
+}
+
+// Use .default class to disable styles
+:not(.default) {
+  a {
+    @apply text-peter-river;
+  }
+
+  svg {
+    @apply fill-clouds;
+  }
+}

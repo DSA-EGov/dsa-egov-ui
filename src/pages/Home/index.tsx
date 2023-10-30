@@ -1,7 +1,10 @@
-import { FC, memo } from 'react';
+import { FC, memo, useContext } from 'react';
+import { AuthContext } from '@/context/AuthContext';
 
 const Home: FC = () => {
-  return <h1>Home</h1>;
+  const { username } = useContext(AuthContext);
+
+  return <h1>Hello, {username}</h1>;
 };
 
 export default memo(Home);
