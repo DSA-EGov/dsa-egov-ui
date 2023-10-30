@@ -1,1 +1,1 @@
-export * from './Route.ts';
+export * from './Route';

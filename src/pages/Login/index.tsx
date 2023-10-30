@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import { useCallback, FC, memo } from 'react';
 import { useKeycloak } from '@react-keycloak/web';
 
-const Login: React.FC = () => {
+const Login: FC = () => {
   const { keycloak } = useKeycloak();
 
   const handleLogin = useCallback(() => {
@@ -12,16 +12,12 @@ const Login: React.FC = () => {
     keycloak?.logout();
   }, [keycloak]);
 
-  if (keycloak?.authenticated) {
-    return (
-      <div>
-        <p>Welcome, {keycloak?.tokenParsed?.preferred_username}!</p>
-        <button onClick={handleLogout}>Logout</button>
-      </div>
-    );
-  }
-
-  return (
+  return keycloak?.authenticated ? (
+    <div>
+      <p>Welcome, {keycloak?.tokenParsed?.preferred_username}!</p>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
+  ) : (
     <div>
       <p>Please login to continue.</p>
       <button onClick={handleLogin}>Login</button>
@@ -29,4 +25,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default memo(Login);

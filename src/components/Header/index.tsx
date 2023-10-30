@@ -4,10 +4,10 @@ import { v4 as uuid } from 'uuid';
 
 import { Route } from '@enums';
 import { mapRouteParams } from '@/helpers/mapRouteParams';
-import { UserContext } from '@contexts/UserContext';
+import { AuthContext } from '@/context/AuthContext';
 
 const Header: FC = () => {
-  const { logOut } = useContext(UserContext);
+  const { logout } = useContext(AuthContext);
 
   return (
     <div className="flex gap-12">
@@ -19,10 +19,10 @@ const Header: FC = () => {
         <Link to={mapRouteParams(Route.SELECTED_CHAT, { id: uuid() })}>
           Opened chat
         </Link>
-        <Link to={Route.LOGIN}>Login</Link>
-        <Link to={Route.REGISTER}>Register</Link>
+        {/*<Link to={Route.LOGIN}>Login</Link>*/}
+        {/*<Link to={Route.REGISTER}>Register</Link>*/}
         <Link to={Route.TERMS}>Terms & Conditions</Link>
-        <button onClick={logOut}>Logout</button>
+        <button onClick={() => logout()}>Logout</button>
       </div>
     </div>
   );

@@ -1,7 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { ReactKeycloakProvider } from '@react-keycloak/web';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import App from './App.tsx';
+import { keycloakConfig } from '@constants/keycloakConfig';
+
 import './index.scss';
+import { routes } from '@constants/routes';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
+const rootElement: HTMLElement = document.getElementById('root')!;
+const router = createBrowserRouter(routes);
+
+createRoot(rootElement).render(
+  <ReactKeycloakProvider
+    authClient={keycloakConfig}
+    initOptions={{
+      onLoad: 'login-required',
+    }}
+  >
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>
+  </ReactKeycloakProvider>,
+);
