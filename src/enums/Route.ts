@@ -1,8 +1,6 @@
 export enum Route {
   HOME = '/',
-  CHAT = '/chat',
-  SELECTED_CHAT = '/chat/:id',
+  CHAT = '/chat/:chatId',
   TERMS = '/terms-of-use',
-  LOGIN = '/login',
   ANY = '*',
 }

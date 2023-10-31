@@ -1,10 +1,11 @@
-import { FC, memo, useContext } from 'react';
-import { AuthContext } from '@/context/AuthContext';
+import { FC, memo } from 'react';
 
 const Home: FC = () => {
-  const { username } = useContext(AuthContext);
-
-  return <h1>Hello, {username}</h1>;
+  return <div className="flex items-center justify-center flex-1">
+    <h1 className="text-7xl font-thin cursor-default">
+      eGov.AI
+    </h1>
+  </div>;
 };
 
 export default memo(Home);

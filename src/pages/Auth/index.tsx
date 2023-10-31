@@ -1,22 +1,18 @@
 import { useCallback, FC, memo } from 'react';
-import { useKeycloak } from '@react-keycloak/web';
+import { Navigate } from 'react-router-dom';
+
+import { useAuth } from '@hooks';
+import { Route } from '@enums';
 
 const Auth: FC = () => {
-  const { keycloak } = useKeycloak();
+  const auth = useAuth();
 
   const handleLogin = useCallback(() => {
-    keycloak?.login();
-  }, [keycloak]);
+    auth.login();
+  }, [auth]);
 
-  const handleLogout = useCallback(() => {
-    keycloak?.logout();
-  }, [keycloak]);
-
-  return keycloak?.authenticated ? (
-    <div>
-      <p>Welcome, {keycloak?.tokenParsed?.preferred_username}!</p>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
+  return auth.isAuthenticated ? (
+    <Navigate to={Route.HOME} />
   ) : (
     <div>
       <p>Please login to continue.</p>

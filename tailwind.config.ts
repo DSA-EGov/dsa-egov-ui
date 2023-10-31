@@ -1,13 +1,26 @@
 import type { Config } from 'tailwindcss';
 
 export default {
-  content: ['**/*.{ts,tsx,css,scss,sass,js,jsx,html}'],
+  content: ['./src/**/*.{ts,tsx,css,scss,sass,js,jsx,html}'],
   theme: {
     extend: {
-      colors: {
-        'midnight-blue': '#2c3e50',
-        'clouds': '#ecf0f1',
-        'peter-river': '#3498db'
+      textColor: {
+        primary: '#ecf0f1',
+        error: '#e74c3c',
+        link: '#3498db',
+        disabled: '#7f8c8d',
+      },
+      fill: {
+        primary: '#ecf0f1',
+        error: '#e74c3c',
+        link: '#3498db',
+        disabled: '#7f8c8d',
+      },
+      backgroundColor: {
+        primary: '#2c3e50',
+      },
+      fontFamily: {
+        'plus-jakarta-sans': 'Plus Jakarta Sans, sans-serif'
       }
     },
   },

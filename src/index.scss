@@ -4,16 +4,26 @@
 @import 'tailwindcss/variants.css';
 
 body {
-  @apply bg-midnight-blue text-clouds;
+  @apply duration-0 ease-linear bg-primary text-primary;
+}
+
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-black/20 rounded-full hover:bg-black/30;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-[#3498db] rounded-full hover:bg-[#70a1ff];
 }
 
 // Use .default class to disable styles
-:not(.default) {
-  a {
-    @apply text-peter-river;
-  }
+a:not(.default) {
+  @apply text-link;
+}
 
-  svg {
-    @apply fill-clouds;
-  }
+svg:not(.default) {
+  @apply fill-primary;
 }

@@ -2,9 +2,8 @@ import { RouteObject } from 'react-router';
 
 import { Route } from '@enums';
 import App from '../App';
-import { Chat, ChatPage, TermsPage } from '@components';
-import EmptyChat from '@components/EmptyChat';
-import { Home } from '@/pages';
+import { Chat } from '@components';
+import { Home, NotFound, Terms } from '@/pages';
 
 export const routes: RouteObject[] = [
   {
@@ -17,26 +16,15 @@ export const routes: RouteObject[] = [
       },
       {
         path: Route.TERMS,
-        element: <TermsPage />,
+        element: <Terms />,
       },
       {
         path: Route.CHAT,
-        element: <ChatPage />,
-        children: [
-          {
-            index: true,
-            element: <EmptyChat />,
-          },
-          {
-            path: Route.SELECTED_CHAT,
-            element: <Chat />,
-          },
-        ],
+        element: <Chat />,
       },
-
       {
         path: Route.ANY,
-        element: <p>Not found</p>,
+        element: <NotFound />,
       },
     ],
   },

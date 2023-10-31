@@ -1,14 +1,7 @@
-import {
-  createContext,
-  FC,
-  PropsWithChildren,
-  useEffect,
-  useMemo,
-} from 'react';
+import type Keycloak from 'keycloak-js';
 import { useKeycloak } from '@react-keycloak/web';
-import Keycloak from 'keycloak-js';
 
-interface AuthContextProps {
+export interface AuthProps {
   readonly isAuthenticated: boolean;
   readonly username?: string;
   readonly email?: string;
@@ -21,15 +14,13 @@ interface AuthContextProps {
   readonly userId?: string;
   readonly token?: string;
   logout: Keycloak['logout'];
+  login: Keycloak['login'];
 }
 
-export const AuthContext = createContext<AuthContextProps>(null!);
-
-export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
+export const useAuth = (): AuthProps => {
   const { keycloak } = useKeycloak();
 
-  // useMemo does not work
-  const providerValue: AuthContextProps = {
+  return {
     isAuthenticated: keycloak.authenticated,
     username: keycloak.tokenParsed?.preferred_username,
     email: keycloak.tokenParsed?.email,
@@ -42,11 +33,6 @@ export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
     userId: keycloak.tokenParsed?.sub,
     token: keycloak.token,
     logout: keycloak.logout,
+    login: keycloak.login,
   };
-
-  return (
-    <AuthContext.Provider value={providerValue}>
-      {children}
-    </AuthContext.Provider>
-  );
 };

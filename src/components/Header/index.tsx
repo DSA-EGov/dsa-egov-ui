@@ -1,28 +1,21 @@
-import { FC, useContext } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 
 import { Route } from '@enums';
 import { mapRouteParams } from '@/helpers/mapRouteParams';
-import { AuthContext } from '@/context/AuthContext';
+import { useAuth } from '@hooks';
 
 const Header: FC = () => {
-  const { logout } = useContext(AuthContext);
+  const auth = useAuth();
 
   return (
-    <div className="flex gap-12">
-      Header
-      {/* temp */}
-      <div className="flex gap-3 text-blue-500">
-        <Link to={Route.HOME}>Home</Link>
-        <Link to={Route.CHAT}>Chat</Link>
-        <Link to={mapRouteParams(Route.SELECTED_CHAT, { id: uuid() })}>
-          Opened chat
-        </Link>
-        {/*<Link to={Route.LOGIN}>Login</Link>*/}
-        {/*<Link to={Route.REGISTER}>Register</Link>*/}
+    <div className="flex gap-12 h-[60px] px-12 border-b border-gray-600">
+      <Link to={Route.HOME}>
+        <img src="/egov.png" alt="eGov.AI" className="aspect-square h-full" />
+      </Link>
+      <div className="flex gap-3 items-center">
         <Link to={Route.TERMS}>Terms & Conditions</Link>
-        <button onClick={() => logout()}>Logout</button>
       </div>
     </div>
   );
