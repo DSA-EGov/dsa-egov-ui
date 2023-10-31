@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useRef } from 'react';
+import { FC, memo, useCallback, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { mapRouteParams } from '@/helpers/mapRouteParams';
@@ -8,35 +8,27 @@ import * as icons from '@icons';
 
 import type { ListItemProps } from './types';
 
-const ListItem: FC<ListItemProps> = ({
-  chat,
-  isSelected,
-  setEditingChatId,
-}) => {
+const ListItem: FC<ListItemProps> = ({ chat, isSelected }) => {
   const nameRef = useRef<HTMLSpanElement>(null!);
 
   const handleNameEdit = useCallback(async () => {
-    setEditingChatId(chat.id);
-
     const nameElement: HTMLSpanElement = nameRef.current;
     nameElement.contentEditable = 'true';
     nameElement.focus();
 
-    const handleBlur = () => {
-      setEditingChatId(null);
-      nameElement.removeEventListener('blur', handleBlur);
+    const stopEditingName = () => {
+      nameElement.removeEventListener('blur', stopEditingName);
+      nameElement.removeEventListener('keyup', handleKeyup);
+      nameElement.contentEditable = 'false';
     };
 
     const handleKeyup = (event: KeyboardEvent) => {
-      if (event.key !== 'Enter') {
-        return;
+      if (['Enter', 'Escape'].includes(event.key)) {
+        stopEditingName();
       }
-
-      setEditingChatId(null);
-      nameElement.removeEventListener('keyup', handleKeyup);
     };
 
-    nameElement.addEventListener('blur', handleBlur);
+    nameElement.addEventListener('blur', stopEditingName);
     nameElement.addEventListener('keyup', handleKeyup);
   }, []);
 

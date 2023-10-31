@@ -22,7 +22,7 @@ const ChatInput: FC = () => {
             <Field
               placeholder="Type your question"
               name="data"
-              autocomplete="off"
+              autoComplete="off"
               className="bg-transparent placeholder:text-primary focus-within:outline-none flex-1"
             />
           </div>

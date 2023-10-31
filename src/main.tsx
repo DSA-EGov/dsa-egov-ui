@@ -15,10 +15,6 @@ const router = createBrowserRouter(routes);
 createRoot(rootElement).render(
   <ReactKeycloakProvider
     authClient={keycloakConfig}
-    onEvent={(e) => {
-      console.log(e);
-    }}
-    onTokens={console.log}
     LoadingComponent={<LoadingScreen />}
     initOptions={{
       onLoad: 'login-required',

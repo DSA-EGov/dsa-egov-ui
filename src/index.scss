@@ -27,3 +27,18 @@ a:not(.default) {
 svg:not(.default) {
   @apply fill-primary;
 }
+
+// Counter clockwise
+.animate-spin-reverse {
+  animation: animate-spin-reverse 2s linear infinite;
+
+  @keyframes animate-spin-reverse {
+    from {
+      transform: rotate(360deg);
+    }
+
+    to {
+      transform: rotate(0deg);
+    }
+  }
+}
