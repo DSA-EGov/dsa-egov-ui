@@ -4,7 +4,7 @@ import type { Chat } from '@/types/Chat';
 
 export const availableChats: Chat[] = [
   {
-    name: 'Chat 1',
+    name: 'Chat 1 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
     id: uuid(),
   },
   {

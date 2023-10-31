@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { FC, memo } from 'react';
 
 const Terms: FC = () => {
   return <div className="">Terms and conditions</div>;

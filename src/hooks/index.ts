@@ -1,2 +1,2 @@
 export * from './useApiService';
-export * from './useAuth'
+export * from './useAuth';

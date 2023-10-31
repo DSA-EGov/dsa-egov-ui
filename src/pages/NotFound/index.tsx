@@ -12,7 +12,9 @@ const NotFound: FC = () => {
       <h2 className="text-lg">
         <span className="text-link">{location.pathname}</span> Not Found
       </h2>
-      <button className="text-lg text-link mt-8" onClick={() => navigate(-1)}>Go back</button>
+      <button className="text-lg text-link mt-8" onClick={() => navigate(-1)}>
+        Go back
+      </button>
     </div>
   );
 };

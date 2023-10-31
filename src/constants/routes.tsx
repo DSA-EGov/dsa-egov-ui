@@ -2,8 +2,7 @@ import { RouteObject } from 'react-router';
 
 import { Route } from '@enums';
 import App from '../App';
-import { Chat } from '@components';
-import { Home, NotFound, Terms } from '@/pages';
+import { Home, NotFound, Terms, Chat } from '@/pages';
 
 export const routes: RouteObject[] = [
   {

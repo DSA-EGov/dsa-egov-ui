@@ -1,10 +1,10 @@
 import { FC, memo, useCallback } from 'react';
 
 import * as icons from '@icons';
-import { useAuth } from '@hooks'
+import { useAuth } from '@hooks';
 
 const CreateChatButton: FC = () => {
-  const auth = useAuth()
+  const auth = useAuth();
 
   const handleCreateChat = useCallback(() => {}, []);
 
