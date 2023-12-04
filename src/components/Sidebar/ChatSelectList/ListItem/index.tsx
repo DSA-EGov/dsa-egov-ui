@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useRef, useState } from 'react';
+import { FC, memo, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import { mapRouteParams } from '@/helpers/mapRouteParams';
@@ -8,7 +8,12 @@ import * as icons from '@icons';
 
 import type { ListItemProps } from './types';
 
-const ListItem: FC<ListItemProps> = ({ chat, isSelected }) => {
+const ListItem: FC<ListItemProps> = ({
+  chat,
+  isSelected,
+  onDelete,
+  onRename,
+}) => {
   const nameRef = useRef<HTMLSpanElement>(null!);
 
   const handleNameEdit = useCallback(async () => {
@@ -20,6 +25,7 @@ const ListItem: FC<ListItemProps> = ({ chat, isSelected }) => {
       nameElement.removeEventListener('blur', stopEditingName);
       nameElement.removeEventListener('keyup', handleKeyup);
       nameElement.contentEditable = 'false';
+      onRename(chat.id, nameElement.textContent);
     };
 
     const handleKeyup = (event: KeyboardEvent) => {
@@ -31,8 +37,6 @@ const ListItem: FC<ListItemProps> = ({ chat, isSelected }) => {
     nameElement.addEventListener('blur', stopEditingName);
     nameElement.addEventListener('keyup', handleKeyup);
   }, []);
-
-  const handleDelete = useCallback(async () => {}, []);
 
   return (
     <li key={chat.id} className="flex">
@@ -59,7 +63,7 @@ const ListItem: FC<ListItemProps> = ({ chat, isSelected }) => {
               <icons.Pencil width={18} height={18} />
             </button>
             <button
-              onClick={handleDelete}
+              onClick={() => onDelete(chat.id)}
               className="rounded-full hover:bg-white/10 p-2 -my-2 group"
             >
               <icons.DeleteBin

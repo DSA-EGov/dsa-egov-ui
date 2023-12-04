@@ -18,6 +18,7 @@ export default {
       },
       backgroundColor: {
         primary: '#2c3e50',
+        secondary: '#3c6382'
       },
       fontFamily: {
         'plus-jakarta-sans': 'Plus Jakarta Sans, sans-serif'

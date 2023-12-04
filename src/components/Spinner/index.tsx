@@ -5,7 +5,7 @@ import { cn } from '@helpers';
 
 interface Props {
   className?: string;
-  size?: number
+  size?: number;
 }
 
 const Spinner: FC<Props> = ({ className, size = 48 }) => {

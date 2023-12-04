@@ -14,7 +14,10 @@ const Header: FC = () => {
       </Link>
       <div className="flex gap-6 lg:gap-9 xl:gap-12 items-center">
         <Link to={Route.TERMS}>Terms & Conditions</Link>
-        <span className="cursor-pointer text-link" onClick={() => navigator.clipboard.writeText(auth.token)}>
+        <span
+          className="cursor-pointer text-link"
+          onClick={() => navigator.clipboard.writeText(auth.token)}
+        >
           Copy JWT
         </span>
       </div>
