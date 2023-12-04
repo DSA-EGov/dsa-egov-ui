@@ -1,11 +1,17 @@
 import axios, { RawAxiosRequestHeaders } from 'axios';
 
-// TODO: figure out how to do requests using keycloak data
 export class ApiService {
-  private static readonly _baseUrl = import.meta.env.VITE_API_URL;
+  public static readonly routes = {
+    SESSIONS_GET: import.meta.env.VITE_API_URL + '/sessions',
+    SESSIONS_POST: import.meta.env.VITE_API_URL + '/sessions',
+    SESSIONS_PUT: import.meta.env.VITE_API_URL + '/sessions/:id',
+    SESSIONS_DELETE: import.meta.env.VITE_API_URL + '/sessions/:id',
+  };
+  private static readonly _baseUrl: string = import.meta.env.VITE_API_URL;
+  private readonly _token: string;
 
-  private get _token(): string | null {
-    return localStorage.getItem('accessToken');
+  constructor(token: string) {
+    this._token = token;
   }
 
   private get _headers(): Partial<RawAxiosRequestHeaders> {

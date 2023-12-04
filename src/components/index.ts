@@ -5,6 +5,7 @@ import Sidebar from './Sidebar';
 import LoadingScreen from './LoadingScreen';
 import ChatInput from './ChatInput';
 import ChatMessages from './ChatMessages';
+import Spinner from './Spinner';
 
 export {
   Header,
@@ -14,4 +15,5 @@ export {
   LoadingScreen,
   ChatInput,
   ChatMessages,
+  Spinner,
 };

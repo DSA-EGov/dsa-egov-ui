@@ -1,11 +1,9 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 
 import { Outlet } from 'react-router';
 import { Header, Sidebar } from '@components';
-import { useAuth } from '@hooks';
 
 const App: FC = () => {
-  const auth = useAuth();
 
   return (
     <main className="mx-auto max-w-[1920px] h-screen max-h-screen overflow-auto flex flex-col font-plus-jakarta-sans font-normal">

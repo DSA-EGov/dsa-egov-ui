@@ -1,11 +1,11 @@
 import { FC, memo } from 'react';
 
-import * as icons from '@icons';
+import { Spinner } from '@components';
 
 const LoadingScreen: FC = () => {
   return (
     <div className="flex items-center justify-center absolute h-screen w-screen bg-black/50">
-      <icons.Spinner width={56} height={56} className="animate-spin-reverse" />
+      <Spinner size={64} />
     </div>
   );
 };

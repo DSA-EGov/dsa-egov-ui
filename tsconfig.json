@@ -28,6 +28,8 @@
       "@enums/*": ["./enums/*"],
       "@constants": ["./constants/index"],
       "@constants/*": ["./constants/*"],
+      "@helpers": ["./helpers/index"],
+      "@helpers/*": ["./helpers/*"],
       "@components": ["./components/index"],
       "@components/*": ["./components/*"],
       "@contexts": ["./contexts/index"],
