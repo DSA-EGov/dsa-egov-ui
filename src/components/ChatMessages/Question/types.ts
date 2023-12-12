@@ -1,6 +1,6 @@
-import type { IQuestion } from '@/types/IQuestion'
+import type { IQuestion } from '@/types/IQuestion';
 
 export interface QuestionProps {
-  question: IQuestion
-  isLast: boolean
+  question: IQuestion;
+  isLast: boolean;
 }

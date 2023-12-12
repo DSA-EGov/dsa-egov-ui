@@ -7,13 +7,21 @@ import { useAuth } from '@hooks';
 const Message: FC<QuestionProps> = ({ question, isLast }) => {
   const auth = useAuth();
 
-  const name = auth.givenName ?? auth.familyName ?? auth.username ?? auth.name ?? 'undefined';
+  const name =
+    auth.givenName ??
+    auth.familyName ??
+    auth.username ??
+    auth.name ??
+    'undefined';
 
   return (
     <div
-      className={classNames('px-6 flex py-6 flex-col justify-center gap-3 text-lg', {
-        'border-t border-t-gray-600': !isLast,
-      })}
+      className={classNames(
+        'px-6 flex py-6 flex-col justify-center gap-3 text-lg',
+        {
+          'border-t border-t-gray-600': !isLast,
+        },
+      )}
     >
       <p>
         <span className="text-dim">{name}: </span>

@@ -1,4 +1,4 @@
 export interface PostQuestionDto {
-  sessionId: string
-  text: string
+  sessionId: string;
+  text: string;
 }
