@@ -6,6 +6,9 @@ export class ApiService {
     SESSIONS_POST: import.meta.env.VITE_API_URL + '/sessions',
     SESSIONS_PATCH: import.meta.env.VITE_API_URL + '/sessions/:id',
     SESSIONS_DELETE: import.meta.env.VITE_API_URL + '/sessions/:id',
+
+    CHAT_GET: import.meta.env.VITE_API_URL + '/chat/get/:sessionId',
+    CHAT_POST: import.meta.env.VITE_API_URL + '/chat'
   } as const;
 
   private static readonly _baseUrl: string = import.meta.env.VITE_API_URL;

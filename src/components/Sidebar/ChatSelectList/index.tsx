@@ -10,16 +10,16 @@ const ChatSelectList: FC<ChatSelectListProps> = ({
   onRename,
 }) => {
   const params = useParams();
-  const sessionId: string | undefined = params['chatId'];
+  const sessionId: string | undefined = params['sessionId'];
 
   return (
-    <div className="flex flex-col overflow-auto flex-1 pr-6">
-      <ul className="flex flex-col gap-2 px-6 py-1.5 overflow-auto">
+    <div className="flex flex-col overflow-auto mr-3 flex-1 pl-6 pr-3">
+      <ul className="flex flex-col gap-2 py-1.5">
         {sessionsList.map((session) => (
           <ListItem
             onRename={onRename}
             key={session.id}
-            chat={session}
+            session={session}
             onDelete={onDelete}
             isSelected={session.id === sessionId}
           />

@@ -9,6 +9,7 @@ export default {
         error: '#e74c3c',
         link: '#3498db',
         disabled: '#7f8c8d',
+        dim: '#969fa2'
       },
       fill: {
         primary: '#ecf0f1',

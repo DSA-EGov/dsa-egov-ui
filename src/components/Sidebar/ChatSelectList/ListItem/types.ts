@@ -1,7 +1,7 @@
-import type { Chat } from '@/types/Chat';
+import type { Session } from '@/types/Chat';
 
 export interface ListItemProps {
-  chat: Chat;
+  session: Session;
   isSelected: boolean;
   onDelete: (sessionId: string) => void | Promise<void>;
   onRename: (sessionId: string, newName: string) => void | Promise<void>;

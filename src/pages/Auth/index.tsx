@@ -2,7 +2,7 @@ import { useCallback, FC, memo } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { useAuth } from '@hooks';
-import { Route } from '@enums';
+import { AppRoute } from '@enums';
 
 const Auth: FC = () => {
   const auth = useAuth();
@@ -12,7 +12,7 @@ const Auth: FC = () => {
   }, [auth]);
 
   return auth.isAuthenticated ? (
-    <Navigate to={Route.HOME} />
+    <Navigate to={AppRoute.HOME} />
   ) : (
     <div>
       <p>Please login to continue.</p>

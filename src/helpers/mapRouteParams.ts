@@ -1,4 +1,4 @@
-import type { Route } from '@enums';
+import type { AppRoute } from '@enums';
 
 /**
  * @param route route of format /abc/:some-param/123
@@ -6,7 +6,7 @@ import type { Route } from '@enums';
  * @returns route with updated params
  * */
 export const mapRouteParams = (
-  route: string | Route,
+  route: string | AppRoute,
   paramValues: Record<string, string | number>,
 ): string => {
   let parsedRoute = route;

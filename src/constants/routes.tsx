@@ -1,12 +1,12 @@
 import { RouteObject } from 'react-router';
 
-import { Route } from '@enums';
+import { AppRoute } from '@enums';
 import App from '../App';
 import { Home, NotFound, Terms, Chat } from '@/pages';
 
 export const routes: RouteObject[] = [
   {
-    path: Route.HOME,
+    path: AppRoute.HOME,
     element: <App />,
     children: [
       {
@@ -14,15 +14,15 @@ export const routes: RouteObject[] = [
         index: true,
       },
       {
-        path: Route.TERMS,
+        path: AppRoute.TERMS,
         element: <Terms />,
       },
       {
-        path: Route.CHAT,
+        path: AppRoute.CHAT,
         element: <Chat />,
       },
       {
-        path: Route.ANY,
+        path: AppRoute.ANY,
         element: <NotFound />,
       },
     ],
