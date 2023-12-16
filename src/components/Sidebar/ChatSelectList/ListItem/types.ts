@@ -1,4 +1,4 @@
-import type { Session } from '@/types/Chat';
+import type { Session } from '@/types/Session';
 
 export interface ListItemProps {
   session: Session;
